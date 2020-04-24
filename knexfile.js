@@ -12,7 +12,8 @@ module.exports = {
     },
     seeds: {
       folder: './data/seeds'
-    }
+    },
+    
   },
 
 };
