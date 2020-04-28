@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  knex.schema
+  return knex.schema
     .createTable('recipe_ingredients', tbl => {
       tbl.integer('recipe_id')
         .unsigned()
@@ -19,5 +19,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  knex.schema.dropTableIfExists("recipe_ingredients");
+  return knex.schema.dropTableIfExists("recipe_ingredients");
 };
