@@ -5,7 +5,7 @@ exports.up = function(knex) {
       tbl.text("instruction", 128)
         .notNullable()
       tbl.integer("recipe_id")
-        .unSigned()
+        .unsigned()
         .notNullable()
         .references("id")
         .inTable("recipes")

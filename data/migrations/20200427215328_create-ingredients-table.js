@@ -8,7 +8,7 @@ exports.up = function(knex) {
       tbl.float("quantity")
         .notNullable()
       tbl.integer("recipe_id")
-        .unSigned()
+        .unsigned()
         .notNullable()
         .references("id")
         .inTable("recipes")
