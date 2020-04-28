@@ -9,10 +9,10 @@ module.exports = {
       filename: './data/recipe.db3',
     },
     migrations: {
-      folder: './data/migrations'
+      directory: './data/migrations'
     },
     seeds: {
-      folder: './data/seeds'
+      directory: './data/seeds'
     },
     // needed when using foreign keys
     pool: {

@@ -7,6 +7,11 @@ exports.up = function(knex) {
         .notNullable()
       tbl.float("quantity")
         .notNullable()
+      tbl.integer("recipe_id")
+        .unSigned()
+        .notNullable()
+        .references("id")
+        .inTable("recipes")
     });
 };
 
