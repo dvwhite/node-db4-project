@@ -4,6 +4,9 @@ exports.up = function(knex) {
       tbl.increments()
       tbl.text("step", 128)
         .notNullable()
+      tbl.integer("number")
+        .unsigned()
+        .notNullable()
     });
 };
 
