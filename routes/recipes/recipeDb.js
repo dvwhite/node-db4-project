@@ -1,17 +1,18 @@
-const db = require("../data/dbConfig");
+const db = require("./../../data/dbConfig");
 
 module.exports = {
-  find,
-  findById
+  getRecipes,
+  getRecipeById,
+  getShoppingList
 };
 
-function find() {
+function getRecipes() {
   return db("recipes");
 }
 
-function findById(id) {
+function getRecipeById(recipe_id) {
   return db("recipes")
-    .where({ id })
+    .where({ id: recipe_id })
     .first();
-};
+}
 
