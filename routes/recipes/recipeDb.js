@@ -4,7 +4,8 @@ module.exports = {
   getRecipes,
   getRecipeById,
   getShoppingList,
-  getInstructions
+  getInstructions,
+  getRecipesWithIngredient
 };
 
 function getRecipes() {
@@ -30,4 +31,12 @@ function getInstructions(recipe_id) {
     .leftJoin("recipe_instructions as ri", "r.id", "ri.recipe_id")
     .leftJoin("instructions as i", "i.id", "ri.instruction_id")
     .orderBy("i.number")
+}
+
+function getRecipesWithIngredient(ingredient_id) {
+  return db("recipes as r")
+    .select(["r.name"])
+    .leftJoin("recipe_ingredients as ri", "r.id", "ri.recipe_id")
+    .leftJoin("ingredients as i", "i.id", "ri.ingredient_id")
+    .where("i.id", ingredient_id)
 }
