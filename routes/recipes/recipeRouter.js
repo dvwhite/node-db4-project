@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const { find, findById } = require("./recipeDb.js");
+const { getRecipes, getRecipeById, getShoppingList } = require("./recipeDb.js");
 
 router.get("/", async (req, res) => {
   try {
-    const recipes = await find();
+    const recipes = await getRecipes();
     if (!recipes) {
       return res.status(404).json({
         message: "Not Found",
@@ -24,10 +24,10 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", validateRecipeId, async (req, res) => {
+router.get("/:id/shoppingList", validateRecipeId, async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const recipe = findById(id);
+    const recipe = await getShoppingList(id);
     res.status(200).json({
       message: "Success",
       validation: [],
@@ -41,7 +41,7 @@ router.get("/:id", validateRecipeId, async (req, res) => {
 async function validateRecipeId(req, res, next) {
   try {
     const id = Number(req.params.id);
-    const recipe = await findById(id);
+    const recipe = await getRecipeById(id);
     if (!recipe) {
       return res.status(400).json({
         message: "Bad Request",
