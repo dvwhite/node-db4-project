@@ -3,7 +3,8 @@ const db = require("./../../data/dbConfig");
 module.exports = {
   getRecipes,
   getRecipeById,
-  getShoppingList
+  getShoppingList,
+  getInstructions
 };
 
 function getRecipes() {
@@ -21,4 +22,12 @@ function getShoppingList(recipe_id) {
     .select(["i.name", "i.quantity"])
     .leftJoin("recipe_ingredients as ri", "r.id", "ri.recipe_id")
     .leftJoin("ingredients as i", "i.id", "ri.ingredient_id")
+}
+
+function getInstructions(recipe_id) {
+  return db("recipes as r")
+    .select(["i.number", "i.step"])
+    .leftJoin("recipe_instructions as ri", "r.id", "ri.recipe_id")
+    .leftJoin("instructions as i", "i.id", "ri.instruction_id")
+    .orderBy("i.number")
 }
