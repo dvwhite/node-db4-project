@@ -7,8 +7,8 @@ server.use(express.json());
 server.use(cors());
 
 // Routes
-const recipeRoutes = require("./recipes/recipeRouter");
-const ingredientRoutes = require("./ingredients/ingredientRouter");
+const recipeRoutes = require("./routes/recipes/recipeRouter");
+const ingredientRoutes = require("./routes/ingredients/ingredientRouter");
 server.use("/api/recipes", recipeRoutes)
 server.use("/api/ingredients", ingredientRoutes)
 
