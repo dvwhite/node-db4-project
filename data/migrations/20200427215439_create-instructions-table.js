@@ -2,13 +2,8 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("instructions", tbl => {
       tbl.increments()
-      tbl.text("instruction", 128)
+      tbl.text("step", 128)
         .notNullable()
-      tbl.integer("recipe_id")
-        .unsigned()
-        .notNullable()
-        .references("id")
-        .inTable("recipes")
     });
 };
 
